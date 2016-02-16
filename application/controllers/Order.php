@@ -80,7 +80,7 @@ class Order extends Application {
     function add($order_num, $item) {
         //Handle Order Additions
         $this->orders->add_item($order_num, $item);
-        
+
         redirect('/order/display_menu/' . $order_num);
     }
 
@@ -89,7 +89,16 @@ class Order extends Application {
         $this->data['title'] = 'Checking Out';
         $this->data['pagebody'] = 'show_order';
         $this->data['order_num'] = $order_num;
-        //FIXME
+
+        //Checkout View Parameters
+        $this->data['total'] = number_format($this->orders->total($order_num), 2);
+
+        $items = $this->orderitems->group($order_num);
+        foreach ($items as $item) {
+            $menuitem = $this->menu->get($item->item);
+            $item->code = $menuitem->name;
+        }
+        $this->data['items'] = $items;
 
         $this->render();
     }
