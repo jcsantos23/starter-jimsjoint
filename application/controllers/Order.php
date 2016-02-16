@@ -73,7 +73,7 @@ class Order extends Application {
     // make a menu ordering column
     function make_column($category) {
         //Order Display - Column Data
-        return $this->menu->some('catergory', $category);
+        return $this->menu->some('category', $category);
     }
 
     // add an item to an order
