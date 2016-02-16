@@ -28,7 +28,7 @@ class Orders extends MY_Model {
                 $result+=$item->quantity * $menu->price;
             }
         }
-        return $result;
+        return number_format($result, 2);
     }
 
     // retrieve the details for an order
