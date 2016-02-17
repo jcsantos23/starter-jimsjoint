@@ -63,7 +63,7 @@ class Orders extends MY_Model {
         if (count($items) > 0) {
             foreach ($items as $item) {
                 $menu = $CI->menu->get($item->item);
-                $gotem($menu->category) = 1;
+                $gotem[$menu->category] = 1;
             }
         }
         return isset($gotem['m']) && isset($gotem['d']) && isset($gotem['s']);
