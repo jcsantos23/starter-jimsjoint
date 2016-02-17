@@ -99,7 +99,7 @@ class Order extends Application {
             $item->code = $menuitem->name;
         }
         $this->data['items'] = $items;
-        $this->data['okornot'] = $this->orders->validate($num);
+        $this->data['okornot'] = $this->orders->validate($order_num) ? "" : "disabled";
 
         $this->render();
     }
